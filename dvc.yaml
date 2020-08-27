@@ -1,0 +1,7 @@
+stages:
+  download_time_series:
+    cmd: python repro/downloads/time_series/download_time_series_dataset.py
+    deps:
+    - repro/downloads/time_series/download_time_series_dataset.py
+    outs:
+    - data/ts/

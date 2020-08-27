@@ -1,0 +1,8 @@
+download_time_series:
+  cmd: python repro/downloads/time_series/download_time_series_dataset.py
+  deps:
+  - path: repro/downloads/time_series/download_time_series_dataset.py
+    md5: fdbf8c7e447ab38fa40aa7ff3d428668
+  outs:
+  - path: data/ts/
+    md5: f9e886d2692c5611a3839fe3dab9d187.dir
