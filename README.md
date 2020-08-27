@@ -14,11 +14,12 @@ Toy experimental setup for evaluating relevance of deep generative models in rem
 
 ### Synthetic imagery generation
 
-- __Generation step__ : synthetize an _ideal_ latent product
-- __Derivation step__ : degrade latent product to match desired characteristics (resolution, corruption etc)
+- __Generation step__ : _synthetize an ideal latent product_
+- __Derivation step__ : _degrade latent product to match desired characteristics (resolution, corruption etc)_
 
 
-__How to :__
+__How to ?__
+
 Setup YAML configuration files specifying _generation_ and _derivation_ steps. Templates are proposed under `src/toygeneration/config/`.
 
 Execute generation as:
@@ -51,11 +52,11 @@ For generation as for derivation, created frames have an instance segmentation a
 
 ### Image Translation Model training
 
-__How to :__
+__How to ?__
 
 Setup YAML configuration files specifying training : dataset, model, optimizer, experiment. Templates are proposed under `src/rsgan/config`.
 
-Execute training on say GPU 0 as:
+Execute training on, say GPU 0, as:
 ```bash
 $ python run_training.py --cfg=path/to/config.yaml --o=output/directory --device=0
 ```
@@ -63,10 +64,11 @@ $ python run_training.py --cfg=path/to/config.yaml --o=output/directory --device
 
 ### Spatiotemporal Evaluation of Image Translation Model
 
-- __Make reference classifier__ for land-cover classification task on dataset as an evaluation proxy for generated images
-- __Evaluate__ generated images quality and performance against groundtruth when fed to reference classifier
+- __Make reference classifier__ _for land-cover classification task on dataset as an evaluation proxy for generated images_
+- __Evaluate__ _generated images quality and performance against groundtruth when fed to reference classifier_
 
-__How to :__
+__How to ?__
+
 Specify reference classifier parameters and image translation model checkpoint to evaluate in YAML file previously defined for training execution.
 
 Execute:
