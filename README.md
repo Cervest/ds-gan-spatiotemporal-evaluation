@@ -54,7 +54,7 @@ For generation as for derivation, created frames have an instance segmentation a
 
 __How to ?__
 
-Setup YAML configuration files specifying training : dataset, model, optimizer, experiment. Templates are proposed under `src/rsgan/config`.
+Setup YAML configuration files specifying training : dataset, model, optimizer, experiment. Examples are proposed under `src/rsgan/config/`.
 
 Execute training on, say GPU 0, as:
 ```bash
