@@ -9,7 +9,7 @@ This repository allows you to :
 - Train and evaluate several remote-sensing image-translation models at : cloud removal, super-resolution, sar-to-optical translation
 
 <p align="center">
-<img src="https://github.com/Cervest/ds-virtual-remote-sensing-toy/blob/master/docs/source/img/latent_vs_derived.png" alt="Ideal image and derived coarser one" width="1000"/>
+<img src="https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/docs/source/img/latent_vs_derived.png" alt="Ideal image and derived coarser one" width="1000"/>
  </p>
 
 __Synthetic imagery generation :__ First, you can setup a YAML configuration file specifying execution. Templates are proposed under `src/toygeneration/config/` directory. Then, from environment run:
@@ -35,7 +35,7 @@ For generation as for derivation, created image frames have a corresponding anno
  ```
 
 <p align="center">
-<img src="https://github.com/Cervest/ds-virtual-remote-sensing-toy/blob/master/docs/source/img/latent_product.png" alt="Ideal product and annotation masks" width="700"/>
+<img src="https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/docs/source/img/latent_product.png" alt="Ideal product and annotation masks" width="700"/>
 </p>
 
 
