@@ -1,27 +1,37 @@
-# A Toy Virtual Dataset for Remote Sensing Imagery Problems Evaluation
-Toy experimental setup for virtual remote sensing feasibility testing
+# Spatial and Temporal Evaluation of Deep Generative Models in Remote Sensing
+Toy experimental setup for evaluating relevance of deep generative models in remote sensing applications
 
 
 ## Getting Started
 
-This repository allows you to :
-- Generate high resolution synthetic toy imagery and degraded versions of it with lower spatial, temporal resolution and artefacts.
-- Train and evaluate several remote-sensing image-translation models at : cloud removal, super-resolution, sar-to-optical translation
+- __(1) Generate__ synthetic remote sensing-like imagery dataset with variable adjustable characteristics (spatial resolution, temporal resolution, tangential scale distortion, cloud contamination, speckle noise)
+- __(2) Train__ a deep generative image translation model on dataset
+- __(3) Evaluate__ generated samples against dataset groundtruth at land-cover time series classification benchmark
 
 <p align="center">
 <img src="https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/docs/source/img/latent_vs_derived.png" alt="Ideal image and derived coarser one" width="1000"/>
  </p>
 
-__Synthetic imagery generation :__ First, you can setup a YAML configuration file specifying execution. Templates are proposed under `src/toygeneration/config/` directory. Then, from environment run:
+### Synthetic imagery generation
+
+- __Generation step__ : synthetize an _ideal_ latent product
+- __Derivation step__ : degrade latent product to match desired characteristics (resolution, corruption etc)
+
+
+__How to :__
+Setup YAML configuration files specifying _generation_ and _derivation_ steps. Templates are proposed under `src/toygeneration/config/`.
+
+Execute generation as:
 
 ```bash
-$ (toy-vrs) python run_toy_generation.py --cfg=path/to/generation/config.yaml --o=sandbox/latent_product
+$ python run_toy_generation.py --cfg=path/to/generation/config.yaml --o=path/to/latent_product
 Generation |################################| 31/31
-$ (toy-vrs) python run_toy_derivation.py --cfg=path/to/derivation/config.yaml --o=sandbox/derived_product
+
+$ python run_toy_derivation.py --cfg=path/to/derivation/config.yaml --o=path/to/derived_product
 Derivation |#################               | 16/31
 ```
 
-For generation as for derivation, created image frames have a corresponding annotation mask for segmentation and classification tasks. Explicitely, output directories are structured as :
+For generation as for derivation, created frames have an instance segmentation and classification annotation masks. Explicitely, output directories are structured as:
 ```
  ├── frames/           # 1 frame = 1 time step
  │   ├── frame_0.h5
@@ -39,25 +49,33 @@ For generation as for derivation, created image frames have a corresponding anno
 </p>
 
 
-__Image translation model training and evaluation :__ Similarly, you need to setup a YAML configutation file specifying the experiment execution. Templates are proposed under `src/rsgan/config` directory. Then, to execute training/testing on GPU 0, run:
+### Image Translation Model training
 
+__How to :__
+
+Setup YAML configuration files specifying training : dataset, model, optimizer, experiment. Templates are proposed under `src/rsgan/config`.
+
+Execute training on say GPU 0 as:
 ```bash
-$ (toy-vrs) python run_training.py --cfg=path/to/experiment/config.yaml --o=sandbox/my_experiment_logs --device=0
-$ (toy-vrs) python run_testing.py --cfg=path/to/experiment/config.yaml --o=sandbox/my_experiment_logs --device=0
+$ python run_training.py --cfg=path/to/config.yaml --o=output/directory --device=0
+```
+
+
+### Spatiotemporal Evaluation of Image Translation Model
+
+- __Make reference classifier__ for land-cover classification task on dataset as an evaluation proxy for generated images
+- __Evaluate__ generated images quality and performance against groundtruth when fed to reference classifier
+
+__How to :__
+Specify reference classifier parameters and image translation model checkpoint to evaluate in YAML file previously defined for training execution.
+
+Execute:
+```bash
+$ python make_reference_classifier.py --cfg=path/to/experiment/config.yaml --o=output/directory
+$ python run_testing.py --cfg=path/to/experiment/config.yaml --o=output/directory --device=0
 ```
 
 ## Overview
-
-### Motivation
-
-In the framework of remote sensing, generative models are of keen interest as they could help cope with limited access to costly high-resolution imagery through super-resolution models. We believe, that from a general tool to combine observations from different missions into a higher-resolution one will be built using neural network based generative modeling.
-
-However, when it come to the evaluation of generative methods previous work has been mostly relying on qualitative evidence and some quantitative metrics often poorly consistent between each other. We propose in this work a new synthetic toy dataset structured as :
-
-- An ideal latent high-resolution toy imagery product
-- Mutliple lower-resolution products derived from the ideal one
-
-A super-resolution task can then be stated from the point of view of missing data wrt the latent product and having access to such synthetic groundtruth allows to accurately quantify the discrepancy with the results generated out of several coarser observations.
 
 ### Organization
 
@@ -66,15 +84,11 @@ The repository is structured as follows :
 ```
 ├── data/
 ├── docs/
-├── notebooks/
 ├── repro/
 ├── src/
 ├── tests/
 ├── utils/
-├── Dvcfile
-├── requirements.txt
-├── README.md
-├── make_baseline_classifier.py
+├── make_reference_classifier.py
 ├── run_training.py
 ├── run_testing.py
 ├── run_toy_generation.py
@@ -84,7 +98,6 @@ The repository is structured as follows :
 __Directories :__
 - `data/` : Time series datasets used for toy product generation, generated toy datasets and experiments outputs
 - `docs/`: any paper, notes, image relevant to this repository
-- `notebooks/`: demonstration notebooks
 - `src/`: all modules to run synthetic data generation and experiments
 - `tests/`: unit testing
 - `utils/`: miscellaneous utilities
@@ -121,30 +134,23 @@ __`src/` directory is then subdivided into :__
     ├── config/
     ├── callbacks/
     ├── data/
-    │   ├── datasets
-    │   └── transforms
+    │   └── datasets/
     ├── evaluation
     │   └── metrics/
     ├── experiments
     │   ├── cloud_removal/
     │   ├── sar_to_optical/
-    │   ├── super_resolution/
     │   ├── experiment.py
-    │   └── utils
-    ├── losses
-    └── models
+    │   └── utils/
+    └── models/
 ```
 - `config/`: YAML configuration specification files for training and testing of models
 - `callbacks/`: Experiment execution callback modules
 - `data/`: Modules for used imagery datasets loading
 - `evaluation/`: Misc useful modules for evaluation
 - `experiments/`: Main directory proposing classes encapsulating each experiment
-- `losses`: Losses computation modules
 - `models`: Neural networks models used in experiments
 
-
-### Features description
-_Add functionalities presentation (links for more details over functionalities in [wiki](https://github.com/Cervest/ds-virtual-remote-sensing-toy/wiki))_
 
 ## Installation
 
@@ -154,20 +160,20 @@ Code implemented in Python 3.8
 
 Clone and go to repository
 ```bash
-$ git clone https://github.com/Cervest/ds-virtual-remote-sensing-toy.git
-$ cd ds-virtual-remote-sensing-toy
+$ git clone https://github.com/Cervest/ds-gan-spatiotemporal-evaluation.git
+$ cd ds-gan-spatiotemporal-evaluation
 ```
 
 Create and activate environment
 ```bash
-$ pyenv virtualenv 3.8.2 toy-vrs
-$ pyenv activate toy-vrs
-$ (toy-vrs)
+$ pyenv virtualenv 3.8.2 gan-eval
+$ pyenv activate gan-eval
+$ (gan-eval)
 ```
 
 Install dependencies
 ```bash
-$ (toy-vrs) pip install -r requirements.txt
+$ (gan-eval) pip install -r requirements.txt
 ```
 
 #### Setting up dvc
@@ -175,16 +181,15 @@ $ (toy-vrs) pip install -r requirements.txt
 From the environment and root project directory, you first need to build
 symlinks to data directories as:
 ```bash
-$ (toy-vrs) dvc init -q
-$ (toy-vrs) python repro/dvc.py --link=where/data/stored --cache=where/cache/stored
+$ (gan-eval) dvc init -q
+$ (gan-eval) python repro/dvc.py --link=where/data/stored --cache=where/cache/stored
 ```
 if no `link` specified, data will be stored by default into `data/` directory and fefault cache is `.dvc/cache`.
 
 To download datasets, then simply run:
 ```bash
-$ (toy-vrs) dvc repro
+$ (gan-eval) dvc repro
 ```
-In case pipeline is broken, hidden bash files are provided under `repro/downloads/ts/.download_ts.sh`
+In case pipeline is broken, hidden bash files are provided under `repro` directory
 
-Then, according to experiment you wish to run, dvc files are gathered `repro/toy-data` to reproduce synthetic dataset generation, and experiment dvc files are proposed under `repro/experiments`
 ## References
