@@ -4,9 +4,9 @@ Toy experimental setup for evaluating relevance of deep generative models in rem
 
 ## Getting Started
 
-- __(1) Generate__ synthetic remote sensing-like imagery dataset with variable adjustable characteristics (spatial resolution, temporal resolution, tangential scale distortion, cloud contamination, speckle noise)
-- __(2) Train__ a deep generative image translation model on dataset
-- __(3) Evaluate__ generated samples against dataset groundtruth at land-cover time series classification benchmark
+- __(i) Generate__ synthetic remote sensing-like imagery dataset with variable adjustable characteristics (spatial resolution, temporal resolution, tangential scale distortion, cloud contamination, speckle noise)
+- __(ii) Train__ a deep generative image translation model on dataset
+- __(iii) Evaluate__ generated samples against dataset groundtruth at land-cover time series classification benchmark
 
 <p align="center">
 <img src="https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/docs/source/img/latent_vs_derived.png" alt="Ideal image and derived coarser one" width="1000"/>
