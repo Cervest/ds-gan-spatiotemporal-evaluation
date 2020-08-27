@@ -27,5 +27,5 @@ dvc run -v -n test_cgan_frame_recurrent_toy_cloud_removal \
 -d $DATASET \
 -d $TRAIN_DIR \
 -o $TEST_DIR \
-"python make_baseline_classifier.py --cfg=$CONFIG --o=$TEST_DIR/baseline_classifier/classifier.pickle \
+"python make_reference_classifier.py --cfg=$CONFIG --o=$TEST_DIR/reference_classifier/classifier.pickle \
 && python run_testing.py --cfg=$CONFIG --o=$ROOT --device=$DEVICE"
