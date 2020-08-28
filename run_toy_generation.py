@@ -63,14 +63,10 @@ def make_ts_dataset(cfg):
     logging.info(f"Loading Time Series Dataset from {ts_cfg['path']}")
 
     # Setup TS dataset and artificially keep nb of dims and labels specified
-    ts_dataset = TSDataset(root=ts_cfg['path'], ndim=ts_cfg['ndim'], nclass=ts_cfg['nclass'])
-
-    # If specified, pair affectation of labels with some reference dataset
-    if ts_cfg['reference_dataset_path']:
-        reference_ts_dataset = TSDataset(root=ts_cfg['reference_dataset_path'],
-                                         ndim=1,
-                                         nclass=ts_cfg['nclass'])
-        ts_dataset.pair_samples_to_dataset(reference_ts_dataset)
+    ts_dataset = TSDataset(root=ts_cfg['path'][0], ndim=ts_cfg['ndim'], nclass=ts_cfg['nclass'])
+    for ts_path in ts_cfg['path'][1:]:
+        other_dataset = TSDataset(root=ts_path, ndim=ts_cfg['ndim'], nclass=ts_cfg['nclass'])
+        ts_dataset = ts_dataset + other_dataset
 
     # Draw list of labels for polygons according to label distribution
     labels_dist = ts_utils.discretize_over_points(stats_dist=stats.uniform,

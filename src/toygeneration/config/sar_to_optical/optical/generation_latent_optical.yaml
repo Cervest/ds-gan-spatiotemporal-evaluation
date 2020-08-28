@@ -10,7 +10,10 @@
 ############################################
 ts:
   # Path to Time Series .ts dataset
-  path: 'data/ts/Multivariate_ts/RacketSports/RacketSports_TRAIN.ts'
+  path:
+    - 'data/ts/Multivariate_ts/RacketSports/RacketSports_TRAIN.ts'
+    - 'data/ts/Multivariate_ts/RacketSports/RacketSports_TEST.ts'
+
 
   # Choose dimensionality of generating time serie, must be <= actual dimensionality of loaded time serie
   ndim: 3
