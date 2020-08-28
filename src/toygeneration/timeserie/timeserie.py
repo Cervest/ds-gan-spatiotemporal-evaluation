@@ -309,7 +309,7 @@ class TimeSerie:
             type: int
         """
         if self.horizon:
-            t_start = np.random.randint(0, len(self.ts) - len(self))
+            t_start = np.random.randint(0, len(self.ts) - len(self) + 1)
         else:
             t_start = 0
         return t_start
