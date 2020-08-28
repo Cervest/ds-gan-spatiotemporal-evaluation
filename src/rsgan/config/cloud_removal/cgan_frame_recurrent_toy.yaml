@@ -197,7 +197,7 @@ model_checkpoint:
 # used for assessment of how good generated samples do at replacing groundtruth for classification task
 reference_classifier:
   # Ridge inverse regularization weight
-  l2_weight: 100
+  l2_weight: 10
 
   # Convergence criterion tolerance
   tol: 0.0001
