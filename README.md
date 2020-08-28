@@ -186,9 +186,9 @@ symlinks to data directories as:
 $ (gan-eval) dvc init -q
 $ (gan-eval) python repro/dvc.py --link=where/data/stored --cache=where/cache/stored
 ```
-if no `link` specified, data will be stored by default into `data/` directory and fefault cache is `.dvc/cache`.
+if no `link` specified, data will be stored by default into `data/` directory and default cache is `.dvc/cache`.
 
-To download datasets, then simply run:
+To reproduce full pipeline, execute:
 ```bash
 $ (gan-eval) dvc repro
 ```
