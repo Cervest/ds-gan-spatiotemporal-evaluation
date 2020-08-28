@@ -239,6 +239,11 @@ class TSDataset(Dataset):
         labels_order_list = np.random.choice(unique_labels, size=size, p=distribution)
         self._labels_order_list = labels_order_list
 
+    def __add__(self, ts_dataset):
+        self.data = pd.concat([self.data, ts_dataset.data])
+        self.labels = np.concatenate([self.labels, ts_dataset.labels])
+        return self
+
     @property
     def root(self):
         return self._root

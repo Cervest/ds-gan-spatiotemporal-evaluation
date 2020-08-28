@@ -10,10 +10,10 @@
 ############################################
 ts:
   # Path to Time Series .ts dataset
-  path: 'data/ts/Multivariate_ts/FingerMovements/FingerMovements_TRAIN.ts'
+  path: 'data/ts/Multivariate_ts/RacketSports/RacketSports_TRAIN.ts'
 
   # Choose dimensionality of generating time serie, must be <= actual dimensionality of loaded time serie
-  ndim: 5
+  ndim: 3
 
   # Number of classes of the time serie, <= actual number of classes
   nclass: 2
@@ -32,7 +32,7 @@ product:
     height: 256
 
   # Bands = channels ; must match time serie dimensionality
-  nbands: 5
+  nbands: 3
 
   # Horizon = number of time steps
   horizon: 31
