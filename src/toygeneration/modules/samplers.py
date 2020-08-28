@@ -94,7 +94,7 @@ class GPSampler(Sampler):
         choleskies = []
         for sampling_axis in sampling_points:
             K = kernel(sampling_axis)
-            choleskies += [np.dual.cholesky(K)]
+            choleskies += [np.linalg.cholesky(K)]
         return choleskies
 
     @classmethod
