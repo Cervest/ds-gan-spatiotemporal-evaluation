@@ -215,7 +215,7 @@ reference_classifier:
 ############################################
 testing:
   # Path to checkpoint file to load for testing
-  chkpt: 'data/experiments_outputs/cgan_frame_recurrent_toy_cloud_removal/dvc_run/checkpoints/epoch=48.ckpt'
+  chkpt:
 
   # Path to baseline time series classifier to use for evaluation at pixelwise classification
-  reference_classifier_path: 'data/experiments_outputs/cgan_frame_recurrent_toy_cloud_removal/dvc_run/eval/baseline_classifier/classifier.pickle'
+  reference_classifier_path:
