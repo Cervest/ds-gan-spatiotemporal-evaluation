@@ -32,7 +32,7 @@ def main(args, cfg):
     train_loader, val_loader = make_annotated_clean_frames_dataloaders(experiment)
 
     # Convert into (n_pixel, n_channel), (n_pixel,) arrays for sklearn
-    logging.info("Converting datasets as arrays formatted for sklearn")
+    logging.info("Converting datasets as arrays for sklearn")
     X_train, y_train = dataset_as_arrays(train_loader, seed=cfg['experiment']['seed'])
     X_val, y_val = dataset_as_arrays(val_loader, seed=cfg['experiment']['seed'])
 
@@ -52,11 +52,11 @@ def main(args, cfg):
     save_pickle(dump_path, rf)
 
     # Compute and save accuracy
-    logging.info("Computing accuracy on testing set")
+    logging.info("Computing accuracy on validation set")
     compute_and_save_accuracy(X_val, y_val, rf, dump_path)
 
     # Compute and save confusion matrix
-    logging.info("Computing confusion matrix on testing set")
+    logging.info("Computing confusion matrix on validation set")
     compute_and_save_confusion_matrix(X_val, y_val, rf, dump_path)
 
 
@@ -187,7 +187,7 @@ def fit_classifier_by_chunks(X_train, y_train, l2_weight, n_chunks, tol, seed, n
     # Fit to training dataset by chunks
     chunks_iterator = zip(np.array_split(X_train, n_chunks), np.array_split(y_train, n_chunks))
     for i, (chunk_X, chunk_y) in enumerate(chunks_iterator):
-        logging.info(f"Fitting Logistic Regression classifier on {len(chunk_X)} pixels")
+        logging.info(f"Fitting Logistic Regression classifier on {len(chunk_X)} pixel time series")
         lr.fit(chunk_X, chunk_y)
     return lr
 
@@ -197,7 +197,7 @@ def compute_and_save_accuracy(X_val, y_val, classifier, dump_path):
     val_accuracy_dump_path = os.path.join(os.path.dirname(dump_path), "accuracy.metric")
     with open(val_accuracy_dump_path, 'w') as f:
         f.write(str(val_accuracy))
-    logging.info(f"Accuracy : {val_accuracy} - dumped at {val_accuracy_dump_path}")
+    logging.info(f"Validation accuracy : {val_accuracy} - dumped at {val_accuracy_dump_path}")
 
 
 def compute_and_save_confusion_matrix(X_val, y_val, classifier, dump_path):

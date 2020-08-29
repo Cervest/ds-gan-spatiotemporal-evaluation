@@ -2,7 +2,7 @@
 config_root="src/toygeneration/config/cloud_removal/"
 data_root="data/toy/cloud_removal/"
 
-for seed in {1..250}
+for seed in {1..30}
 do
   printf "\n GENERATING FOR SEED = "$seed"\n"
 

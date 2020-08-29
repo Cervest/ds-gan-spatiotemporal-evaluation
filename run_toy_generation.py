@@ -100,9 +100,6 @@ def make_random_sampler(cfg):
     if sampler_cfg['name'] == 'gaussian_process':
         sampler = GPSampler(mean=lambda x: np.zeros(x.shape[0]),
                             kernel_name=sampler_cfg['kernel']['name'])
-        # to delete
-        sampler = lambda size: np.zeros(size)
-        #
     elif sampler_cfg['name'] == 'gaussian':
         std = sampler_cfg['std']
         sampler = lambda size: std * np.random.randn(*size)

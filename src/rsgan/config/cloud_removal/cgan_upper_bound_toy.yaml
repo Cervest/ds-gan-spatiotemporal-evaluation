@@ -205,6 +205,9 @@ reference_classifier:
   # How many chunks of training set should be used for training - avoids memory issues
   n_chunks: 1
 
+  # Number of pixels time series to use for training - reduce computational time
+  train_set_size: 600000
+
   # Model initialization random state
   seed: 42
 
