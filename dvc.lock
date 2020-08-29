@@ -6,3 +6,27 @@ download_time_series:
   outs:
   - path: data/ts/
     md5: f9e886d2692c5611a3839fe3dab9d187.dir
+generate_toy_cloud_removal_dataset:
+  cmd: source repro/toy-data/cloud_removal/generate_toy_cloud_removal_dataset.sh
+  deps:
+  - path: data/ts/Multivariate_ts/FingerMovements/FingerMovements_TRAIN.ts
+    md5: 9c29ef8253b497514007599cfe5b5439
+  - path: data/ts/Multivariate_ts/Handwriting/Handwriting_TEST.ts
+    md5: 230cbc221d42c491c85f9979d62d4494
+  - path: run_toy_derivation.py
+    md5: bd6d9a4dc07aa7e74e67172d117f8e0f
+  - path: run_toy_generation.py
+    md5: 28b533193cd176804bf0c08c25dd7274
+  - path: src/toygeneration/config/cloud_removal/optical/derivation_clean_optical.yaml
+    md5: da680a430cf951487bd5d3b2a1f8a2c9
+  - path: src/toygeneration/config/cloud_removal/optical/derivation_clouded_optical.yaml
+    md5: 96c56353c33435ef7466c91c067e2d92
+  - path: src/toygeneration/config/cloud_removal/optical/generation_latent_optical.yaml
+    md5: d7fb8fb66ea6964e4c3e54b256a9772d
+  - path: src/toygeneration/config/cloud_removal/sar/derivation_sar.yaml
+    md5: f0d112826688b7211e64032028014cb4
+  - path: src/toygeneration/config/cloud_removal/sar/generation_latent_sar.yaml
+    md5: 286a21837aca9b86020ef779af9e43a1
+  outs:
+  - path: data/toy/cloud_removal/
+    md5: ad24db4c35aa7849b256c4e6223998da.dir

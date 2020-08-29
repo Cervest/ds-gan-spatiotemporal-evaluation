@@ -538,4 +538,4 @@ class ToyImageTranslationExperiment(ImageTranslationExperiment):
 
     @reference_classifier.setter
     def reference_classifier(self, classifier):
-        self.reference_classifier = classifier
+        self._reference_classifier = classifier

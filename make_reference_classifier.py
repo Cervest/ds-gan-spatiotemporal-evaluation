@@ -154,6 +154,7 @@ def dataset_as_arrays(dataloader, seed):
 
     # Reshape such that each pixel time serie is a sample and channels features + convert to numpy
     X = torch.stack(frames)
+    print(X.shape)
     batch_size, horizon, height, width, channels = X.shape
     X = X.permute(0, 2, 3, 1, 4).contiguous().view(-1, horizon * channels).numpy()
 
@@ -190,7 +191,7 @@ def fit_classifier_by_chunks(X_train, y_train, l2_weight, n_chunks, tol, seed, n
 
     # Fit to training dataset by chunks
     # rdm_idx = np.random.choice(np.arange(len(X_train)), 100000, replace=False)
-    # X_train, y_train = X_train[:600000], y_train[:600000]
+    X_train, y_train = X_train[:600000], y_train[:600000]
     chunks_iterator = zip(np.array_split(X_train, n_chunks), np.array_split(y_train, n_chunks))
     for i, (chunk_X, chunk_y) in enumerate(chunks_iterator):
         logging.info(f"Fitting Logistic Regression classifier on {len(chunk_X)} pixels")
