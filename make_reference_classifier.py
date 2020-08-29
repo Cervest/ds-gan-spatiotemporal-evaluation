@@ -1,5 +1,5 @@
 """
-Runs logistic regression time series classifier
+Train and validate reference pixel time series classifier
 
 Usage:
     make_reference_classifier.py --cfg=<config_file_path>  --o=<output_dir> [--njobs=<number_of_workers>]
@@ -17,6 +17,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, Subset
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.linear_model import LogisticRegression
 from src.rsgan import build_experiment
 from src.toygeneration import ProductDataset
 from src.utils import load_yaml, save_pickle, setseed
@@ -27,21 +28,18 @@ def main(args, cfg):
     experiment = build_experiment(cfg)
 
     # Retrieve dataloaders of annotated target frames from testing set
-    logging.info("Loading testing set")
+    logging.info("Loading training and validation sets")
     train_loader, val_loader = make_annotated_clean_frames_dataloaders(experiment)
 
     # Convert into (n_pixel, n_channel), (n_pixel,) arrays for sklearn
-    logging.info("Converting datasets to arrays")
+    logging.info("Converting datasets as arrays formatted for sklearn")
     X_train, y_train = dataset_as_arrays(train_loader, seed=cfg['experiment']['seed'])
     X_val, y_val = dataset_as_arrays(val_loader, seed=cfg['experiment']['seed'])
 
-    # Remove background pixels which we are not interested in classifying
-    X_train, y_train = filter_background_pixels(X_train, y_train)
-    X_val, y_val = filter_background_pixels(X_val, y_val)
-
     # Fit classifier to testing set
     classifier_cfg = cfg['reference_classifier']
-    rf = fit_classifier_by_chunks(X_train=X_train, y_train=y_train,
+    rf = fit_classifier_by_chunks(X_train=X_train[:classifier_cfg['train_set_size']],
+                                  y_train=y_train[:classifier_cfg['train_set_size']],
                                   l2_weight=classifier_cfg['l2_weight'],
                                   n_chunks=classifier_cfg['n_chunks'],
                                   tol=classifier_cfg['tol'],
@@ -147,36 +145,33 @@ def make_dataloader_from_indices(dataset, batch_size, indices):
 @setseed('numpy')
 def dataset_as_arrays(dataloader, seed):
     """Drain out dataloader to load frames and labels into memory as numpy arrays,
-    ready to be fed to random forest classifier
+    ready to be fed to classifier
     """
     # Unpack frames and annotations
     frames, annotations = list(zip(*iter(dataloader)))
 
     # Reshape such that each pixel time serie is a sample and channels features + convert to numpy
     X = torch.stack(frames)
-    print(X.shape)
     batch_size, horizon, height, width, channels = X.shape
     X = X.permute(0, 2, 3, 1, 4).contiguous().view(-1, horizon * channels).numpy()
 
-    # Flatten time series annotation masks
+    # Flatten time series annotation masks - we keep first time step only
     y = torch.stack(annotations)[:, 0, :].flatten()
 
     # Shuffle jointly pixel and labels
     shuffled_indices = np.random.permutation(len(X))
     X = X[shuffled_indices]
     y = y[shuffled_indices]
-    return X, y
 
-
-def filter_background_pixels(X, y):
+    # Remove background pixels which we are not interested in classifying
     foreground_pixels = y != 0
-    return X[foreground_pixels], y[foreground_pixels]
+    X, y = X[foreground_pixels], y[foreground_pixels]
+    return X, y
 
 
 def fit_classifier_by_chunks(X_train, y_train, l2_weight, n_chunks, tol, seed, n_jobs):
     """Fits classifier by chunk as dataset is to big to be fitted at once.
     """
-    from sklearn.linear_model import LogisticRegression
     # Instantiate logistic regression classifier
     lr_kwargs = {'penalty': 'l2',
                  'C': l2_weight,
@@ -190,8 +185,6 @@ def fit_classifier_by_chunks(X_train, y_train, l2_weight, n_chunks, tol, seed, n
     logging.info(lr)
 
     # Fit to training dataset by chunks
-    # rdm_idx = np.random.choice(np.arange(len(X_train)), 100000, replace=False)
-    X_train, y_train = X_train[:600000], y_train[:600000]
     chunks_iterator = zip(np.array_split(X_train, n_chunks), np.array_split(y_train, n_chunks))
     for i, (chunk_X, chunk_y) in enumerate(chunks_iterator):
         logging.info(f"Fitting Logistic Regression classifier on {len(chunk_X)} pixels")
@@ -214,6 +207,7 @@ def compute_and_save_confusion_matrix(X_val, y_val, classifier, dump_path):
                                   display_labels=classifier.classes_)
     confusion_matrix_dump_path = os.path.join(os.path.dirname(dump_path), "confusion_matrix.png")
     save_confusion_matrix_plot(disp, confusion_matrix_dump_path)
+    logging.info(f"Confusion matrix : {cm}")
     logging.info(f"Confusion matrix saved at {confusion_matrix_dump_path}")
 
 
