@@ -25,7 +25,7 @@ class ToyCloudRemovalDataset(ToyDataset):
         self.clouded_optical_dataset = buffer[0]
         self.sar_dataset = buffer[1]
         self.clean_optical_dataset = buffer[2]
-        # self._validate_datasets_length()
+        self._validate_datasets_length()
 
     def _load_datasets(self):
         """Loads and concatenates datasets from multiple views of clouded optical,
