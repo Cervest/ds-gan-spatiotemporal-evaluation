@@ -9,14 +9,18 @@ download_time_series:
 generate_toy_cloud_removal_dataset:
   cmd: source repro/toy-data/cloud_removal/generate_toy_cloud_removal_dataset.sh
   deps:
-  - path: data/ts/Multivariate_ts/FingerMovements/FingerMovements_TRAIN.ts
-    md5: 9c29ef8253b497514007599cfe5b5439
-  - path: data/ts/Multivariate_ts/Handwriting/Handwriting_TEST.ts
-    md5: 230cbc221d42c491c85f9979d62d4494
+  - path: data/ts/Multivariate_ts/Epilepsy/Epilepsy_TEST.ts
+    md5: 603bf7354d26d8af695dd191486fc3b0
+  - path: data/ts/Multivariate_ts/Epilepsy/Epilepsy_TRAIN.ts
+    md5: 5a91e56945516fe08b857ad5c94337b2
+  - path: data/ts/Multivariate_ts/RacketSports/RacketSports_TEST.ts
+    md5: 965e15556649bbd106a480716b765977
+  - path: data/ts/Multivariate_ts/RacketSports/RacketSports_TRAIN.ts
+    md5: 4d6b5d3351de0361216da67e77cbeaff
   - path: run_toy_derivation.py
     md5: bd6d9a4dc07aa7e74e67172d117f8e0f
   - path: run_toy_generation.py
-    md5: 28b533193cd176804bf0c08c25dd7274
+    md5: 9567eb72dae1cbde559f8a329c74df1c
   - path: src/toygeneration/config/cloud_removal/optical/derivation_clean_optical.yaml
     md5: da680a430cf951487bd5d3b2a1f8a2c9
   - path: src/toygeneration/config/cloud_removal/optical/derivation_clouded_optical.yaml
@@ -29,4 +33,4 @@ generate_toy_cloud_removal_dataset:
     md5: 286a21837aca9b86020ef779af9e43a1
   outs:
   - path: data/toy/cloud_removal/
-    md5: ad24db4c35aa7849b256c4e6223998da.dir
+    md5: 35482cea245855890d68e0735094b958.dir
