@@ -63,12 +63,12 @@ model:
 
     # Input image size
     input_size:
-      - 8           # channels
+      - 6           # channels
       - 256         # height
       - 256         # width
 
     # Number of channels of output image
-    out_channels: 5
+    out_channels: 3
 
     # Nb of filters from first to last encoding convolutional block
     enc_filters:
@@ -122,7 +122,7 @@ model:
 
     # Input image size
     input_size:
-      - 13          # channels
+      - 9           # channels
       - 256         # height
       - 256         # width
 
