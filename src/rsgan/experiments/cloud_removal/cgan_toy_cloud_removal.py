@@ -196,8 +196,6 @@ class cGANToyCloudRemoval(ToyImageTranslationExperiment):
         """
         # Unfold batch
         source, target = batch
-        print("Source : ", source.shape)
-        print("Target : ", target.shape)
 
         # Run either generator or discriminator training step
         if optimizer_idx == 0:
@@ -214,8 +212,6 @@ class cGANToyCloudRemoval(ToyImageTranslationExperiment):
                     'Metric/train_recall': recall}
             loss = disc_loss
 
-        print("LOGS : ", logs)
-        print("")
         # Make lightning fashion output dictionnary
         output = {'loss': loss,
                   'progress_bar': logs,

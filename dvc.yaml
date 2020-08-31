@@ -21,3 +21,53 @@ stages:
     - src/toygeneration/config/cloud_removal/sar/generation_latent_sar.yaml
     outs:
     - data/toy/cloud_removal/
+  train_cgan_toy_cloud_removal_seed_17:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal --device=1 --experiment_name=seed_17
+      --seed=17
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_17/run
+  train_cgan_toy_cloud_removal_seed_37:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal --device=1 --experiment_name=seed_37
+      --seed=37
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_37/run
+  train_cgan_toy_cloud_removal_seed_43:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal --device=1 --experiment_name=seed_43
+      --seed=43
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_43/run
+  train_cgan_toy_cloud_removal_seed_73:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal --device=1 --experiment_name=seed_73
+      --seed=73
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_73/run
+  train_cgan_toy_cloud_removal_seed_101:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal --device=1 --experiment_name=seed_101
+      --seed=101
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_101/run
