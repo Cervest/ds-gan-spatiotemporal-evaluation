@@ -30,7 +30,7 @@ CHKPTS=("seed_17/checkpoints/epoch=42.ckpt"
 for (( i=0; i<${#SEEDS[*]}; ++i));
 do
   NAME=seed_${SEEDS[$i]}
-  CHKPT=${CHKPTS[$i]}
+  CHKPT=$ROOT/${CHKPTS[$i]}
   TRAIN_DIR=$ROOT/$NAME/run
   TEST_DIR=$ROOT/$NAME/eval
   CLASSIFIER=$TEST_DIR/reference_classifier/classifier.pickle
@@ -39,7 +39,7 @@ do
   -d $EXPERIMENT \
   -d $DATASET \
   -d $TRAIN_DIR \
-  -d $ROOT/$CHKPT \
+  -d $CHKPT \
   -o $TEST_DIR \
   "python make_reference_classifier.py --cfg=$CONFIG --o=$CLASSIFIER \
     && python run_testing.py --cfg=$CONFIG --o=$ROOT --device=$DEVICE --chkpt=$CHKPT --classifier=$CLASSIFIER"
