@@ -63,7 +63,7 @@ model:
 
     # Input image size
     input_size:
-      - 6           # channels
+      - 3           # channels
       - 256         # height
       - 256         # width
 
@@ -122,7 +122,7 @@ model:
 
     # Input image size
     input_size:
-      - 9           # channels
+      - 6           # channels
       - 256         # height
       - 256         # width
 
