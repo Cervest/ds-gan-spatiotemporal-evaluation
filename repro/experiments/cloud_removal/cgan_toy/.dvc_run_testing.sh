@@ -32,7 +32,7 @@ do
   NAME=seed_${SEEDS[$i]}
   CHKPT=${CHKPTS[$i]}
   TRAIN_DIR=$ROOT/$NAME/run
-  TEST_DIR=$ROOT/$NAME/eval/
+  TEST_DIR=$ROOT/$NAME/eval
   CLASSIFIER=$TEST_DIR/reference_classifier/classifier.pickle
   dvc run -v -f -n test_cgan_toy_cloud_removal_$NAME \
   -d $CONFIG \
@@ -42,5 +42,5 @@ do
   -d $ROOT/$CHKPT \
   -o $TEST_DIR \
   "python make_reference_classifier.py --cfg=$CONFIG --o=$CLASSIFIER \
-    && python run_testing.py --cfg=$CONFIG --o=$ROOT --device=$DEVICE --chkpt=$CHKPT --classifier$CLASSIFIER"
+    && python run_testing.py --cfg=$CONFIG --o=$ROOT --device=$DEVICE --chkpt=$CHKPT --classifier=$CLASSIFIER"
 done
