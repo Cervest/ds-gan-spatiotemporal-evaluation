@@ -534,7 +534,7 @@ class ToyImageTranslationExperiment(ImageTranslationExperiment):
 
     @property
     def reference_classifier(self):
-        return self.reference_classifier
+        return self._reference_classifier
 
     @reference_classifier.setter
     def reference_classifier(self, classifier):
