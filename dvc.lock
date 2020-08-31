@@ -99,3 +99,103 @@ train_cgan_toy_cloud_removal_seed_101:
   outs:
   - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_101/run
     md5: 2b688d311da1b58ca18109193e3fe342.dir
+test_cgan_toy_cloud_removal_seed_17:
+  cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+    --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_17/eval/reference_classifier/classifier.pickle     &&
+    python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+    --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_17/checkpoints/epoch=42.ckpt
+    --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_17/eval/reference_classifier/classifier.pickle
+  deps:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_17/checkpoints/epoch=42.ckpt
+    md5: 78c8ccbc57ea72452eaf5bc841c8bdbf
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_17/run
+    md5: 98bf09bc8d6bd33be04d88d00c408c18.dir
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_toy.yaml
+    md5: da4aa7aae8e155d5c3b5cd93946c49c7
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_17/eval
+    md5: 62fbfb88d6575eb5a312f981b6c47afb.dir
+test_cgan_toy_cloud_removal_seed_37:
+  cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+    --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_37/eval/reference_classifier/classifier.pickle     &&
+    python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+    --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_37/checkpoints/epoch=62.ckpt
+    --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_37/eval/reference_classifier/classifier.pickle
+  deps:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_37/checkpoints/epoch=62.ckpt
+    md5: 21e8732d8a4e7dce46074bd5ac39860c
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_37/run
+    md5: 4f9557cd5bd314d31ce8ceaf5a9d5aaa.dir
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_toy.yaml
+    md5: da4aa7aae8e155d5c3b5cd93946c49c7
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_37/eval
+    md5: 45148ef80dedd906d5db88fedd76c6e8.dir
+test_cgan_toy_cloud_removal_seed_43:
+  cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+    --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_43/eval/reference_classifier/classifier.pickle     &&
+    python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+    --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_43/checkpoints/epoch=60.ckpt
+    --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_43/eval/reference_classifier/classifier.pickle
+  deps:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_43/checkpoints/epoch=60.ckpt
+    md5: 6fa99977c3717271faf9e0cd751e1abc
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_43/run
+    md5: 049a600dcc235cfbb2a00d50714cbf5b.dir
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_toy.yaml
+    md5: da4aa7aae8e155d5c3b5cd93946c49c7
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_43/eval
+    md5: c7c7be743d924e238710ce8415c494c8.dir
+test_cgan_toy_cloud_removal_seed_73:
+  cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+    --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_73/eval/reference_classifier/classifier.pickle     &&
+    python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+    --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_73/checkpoints/epoch=63.ckpt
+    --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_73/eval/reference_classifier/classifier.pickle
+  deps:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_73/checkpoints/epoch=63.ckpt
+    md5: 8dc441a856ff6fd07b4d4f39f8078bcc
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_73/run
+    md5: ed8ffaeda046ba414ebeb9c11f2a249e.dir
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_toy.yaml
+    md5: da4aa7aae8e155d5c3b5cd93946c49c7
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_73/eval
+    md5: 72dbc20f02c6a6989211a67bc8cdf8d1.dir
+test_cgan_toy_cloud_removal_seed_101:
+  cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+    --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval/reference_classifier/classifier.pickle     &&
+    python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+    --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_101/checkpoints/epoch=61.ckpt
+    --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval/reference_classifier/classifier.pickle
+  deps:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_101/checkpoints/epoch=61.ckpt
+    md5: 9dcc4539b7de47a87ce66058025524e8
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_101/run
+    md5: 2b688d311da1b58ca18109193e3fe342.dir
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_toy.yaml
+    md5: da4aa7aae8e155d5c3b5cd93946c49c7
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval
+    md5: 7ae6d617b484fc2866a41ce6b1119073.dir

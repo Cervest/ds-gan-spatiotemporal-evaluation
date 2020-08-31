@@ -71,3 +71,73 @@ stages:
     - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
     outs:
     - data/experiments_outputs/cgan_toy_cloud_removal/seed_101/run
+  test_cgan_toy_cloud_removal_seed_17:
+    cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_17/eval/reference_classifier/classifier.pickle     &&
+      python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+      --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_17/checkpoints/epoch=42.ckpt
+      --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_17/eval/reference_classifier/classifier.pickle
+    deps:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_17/checkpoints/epoch=42.ckpt
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_17/run
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_17/eval
+  test_cgan_toy_cloud_removal_seed_37:
+    cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_37/eval/reference_classifier/classifier.pickle     &&
+      python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+      --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_37/checkpoints/epoch=62.ckpt
+      --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_37/eval/reference_classifier/classifier.pickle
+    deps:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_37/checkpoints/epoch=62.ckpt
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_37/run
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_37/eval
+  test_cgan_toy_cloud_removal_seed_43:
+    cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_43/eval/reference_classifier/classifier.pickle     &&
+      python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+      --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_43/checkpoints/epoch=60.ckpt
+      --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_43/eval/reference_classifier/classifier.pickle
+    deps:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_43/checkpoints/epoch=60.ckpt
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_43/run
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_43/eval
+  test_cgan_toy_cloud_removal_seed_73:
+    cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_73/eval/reference_classifier/classifier.pickle     &&
+      python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+      --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_73/checkpoints/epoch=63.ckpt
+      --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_73/eval/reference_classifier/classifier.pickle
+    deps:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_73/checkpoints/epoch=63.ckpt
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_73/run
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_73/eval
+  test_cgan_toy_cloud_removal_seed_101:
+    cmd: python make_reference_classifier.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml
+      --o=data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval/reference_classifier/classifier.pickle     &&
+      python run_testing.py --cfg=src/rsgan/config/cloud_removal/cgan_toy.yaml --o=data/experiments_outputs/cgan_toy_cloud_removal
+      --device=1 --chkpt=data/experiments_outputs/cgan_toy_cloud_removal/seed_101/checkpoints/epoch=61.ckpt
+      --classifier=data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval/reference_classifier/classifier.pickle
+    deps:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_101/checkpoints/epoch=61.ckpt
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_101/run
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval
