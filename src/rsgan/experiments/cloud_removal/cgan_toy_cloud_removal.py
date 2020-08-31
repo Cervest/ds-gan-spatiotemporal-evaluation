@@ -304,7 +304,7 @@ class cGANToyCloudRemoval(ToyImageTranslationExperiment):
         generated_target = self(source)
 
         # Compute performance at downstream classification task
-        iou_generated, iou_real = self._compute_legitimacy_at_task_score(self.baseline_classifier,
+        iou_generated, iou_real = self._compute_legitimacy_at_task_score(self.reference_classifier,
                                                                          generated_target,
                                                                          target,
                                                                          annotation)

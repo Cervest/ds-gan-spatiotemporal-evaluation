@@ -29,12 +29,12 @@ class CycleGANToySARToOptical(ToyImageTranslationExperiment):
         lr_scheduler_kwargs (dict): paramters of lr scheduler defined in LightningModule.configure_optimizers
         consistency_weight (float): weight of cycle consistency regularization term
         supervision_weight (float): weight of L2 supervision regularization term
-        baseline_classifier (sklearn.BaseEstimator): baseline classifier for evaluation
+        reference_classifier (sklearn.BaseEstimator): baseline classifier for evaluation
         seed (int): random seed (default: None)
     """
     def __init__(self, generator_AB, generator_BA, discriminator_A, discriminator_B,
                  dataset, split, dataloader_kwargs, optimizer_kwargs, lr_scheduler_kwargs=None,
-                 consistency_weight=None, supervision_weight=None, baseline_classifier=None, seed=None):
+                 consistency_weight=None, supervision_weight=None, reference_classifier=None, seed=None):
         super().__init__(model=generator_AB,
                          dataset=dataset,
                          split=split,
@@ -42,7 +42,7 @@ class CycleGANToySARToOptical(ToyImageTranslationExperiment):
                          optimizer_kwargs=optimizer_kwargs,
                          lr_scheduler_kwargs=lr_scheduler_kwargs,
                          criterion=nn.BCELoss(),
-                         baseline_classifier=baseline_classifier,
+                         reference_classifier=reference_classifier,
                          seed=seed)
         self.generator_BA = generator_BA
         self.discriminator_A = discriminator_A

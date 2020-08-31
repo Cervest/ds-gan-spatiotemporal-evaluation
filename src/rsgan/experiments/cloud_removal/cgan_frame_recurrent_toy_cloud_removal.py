@@ -373,7 +373,7 @@ class cGANFrameRecurrentToyCloudRemoval(cGANToyCloudRemoval):
         generated_target = self._run_on_single_time_serie(source, target)
 
         # Compute performance at downstream classification task
-        iou_generated, iou_real = self._compute_legitimacy_at_task_score(self.baseline_classifier,
+        iou_generated, iou_real = self._compute_legitimacy_at_task_score(self.reference_classifier,
                                                                          generated_target,
                                                                          target,
                                                                          annotation)
