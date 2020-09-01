@@ -141,3 +141,43 @@ stages:
     - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
     outs:
     - data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval
+  train_cgan_toy_upper_bound_seed_17:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+      --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_17
+      --seed=17
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_upper_bound_toy/seed_17/run
+  train_cgan_toy_upper_bound_seed_43:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+      --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_43
+      --seed=43
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_upper_bound_toy/seed_43/run
+  train_cgan_toy_upper_bound_seed_73:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+      --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_73
+      --seed=73
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_upper_bound_toy/seed_73/run
+  train_cgan_toy_upper_bound_seed_101:
+    cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+      --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_101
+      --seed=101
+    deps:
+    - data/toy/cloud_removal
+    - src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    - src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    outs:
+    - data/experiments_outputs/cgan_upper_bound_toy/seed_101/run

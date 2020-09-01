@@ -199,3 +199,59 @@ test_cgan_toy_cloud_removal_seed_101:
   outs:
   - path: data/experiments_outputs/cgan_toy_cloud_removal/seed_101/eval
     md5: 7ae6d617b484fc2866a41ce6b1119073.dir
+train_cgan_toy_upper_bound_seed_17:
+  cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_17
+    --seed=17
+  deps:
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    md5: 5ece5ec6fccc20206c867d4b89d359e9
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_upper_bound_toy/seed_17/run
+    md5: 64eb7012cf68de0162dea5df42317048.dir
+train_cgan_toy_upper_bound_seed_43:
+  cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_43
+    --seed=43
+  deps:
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    md5: 7de88b1e490c97e5f280158233e4fe46
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_upper_bound_toy/seed_43/run
+    md5: 4031aae60da9b9aeb9116c682cc9e422.dir
+train_cgan_toy_upper_bound_seed_73:
+  cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_73
+    --seed=73
+  deps:
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    md5: 7de88b1e490c97e5f280158233e4fe46
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_upper_bound_toy/seed_73/run
+    md5: 65f19c0cc8595441ef67decf67e681ca.dir
+train_cgan_toy_upper_bound_seed_101:
+  cmd: python run_training.py --cfg=src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    --o=data/experiments_outputs/cgan_upper_bound_toy --device=1 --experiment_name=seed_101
+    --seed=101
+  deps:
+  - path: data/toy/cloud_removal
+    md5: 35482cea245855890d68e0735094b958.dir
+  - path: src/rsgan/config/cloud_removal/cgan_upper_bound_toy.yaml
+    md5: 7de88b1e490c97e5f280158233e4fe46
+  - path: src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py
+    md5: cd03f9341dc7c67973d70333e246f7ed
+  outs:
+  - path: data/experiments_outputs/cgan_upper_bound_toy/seed_101/run
+    md5: f1ab8c3634816d697d067a522964a023.dir
