@@ -18,11 +18,11 @@ EXPERIMENT=src/rsgan/experiments/cloud_removal/cgan_frame_recurrent_toy_cloud_re
 DATASET=data/toy/cloud_removal
 ROOT=data/experiments_outputs/cgan_frame_recurrent_toy_cloud_removal
 SEEDS=(17 37 43 73 101)
-CHKPTS=("seed_17/checkpoints/epoch=42.ckpt"
-        "seed_37/checkpoints/epoch=62.ckpt"
-        "seed_43/checkpoints/epoch=60.ckpt"
-        "seed_73/checkpoints/epoch=63.ckpt"
-        "seed_101/checkpoints/epoch=61.ckpt")
+CHKPTS=("seed_17/checkpoints/epoch=62.ckpt"
+        "seed_37/checkpoints/epoch=59.ckpt"
+        "seed_43/checkpoints/epoch=59.ckpt"
+        "seed_73/checkpoints/epoch=61.ckpt"
+        "seed_101/checkpoints/epoch=59.ckpt")
 
 
 # Run dvc pipeline on specified device
