@@ -86,6 +86,7 @@ $ python run_testing.py --cfg=path/to/experiment/config.yaml --o=output/director
 | [Frame-recurrent cGAN Cloud Removal](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/src/rsgan/experiments/cloud_removal/cgan_frame_recurrent_toy_cloud_removal.py#L12) | 0.200 | 0.074 | 21.2 | 0.825 | 0.147 | 0.553             | 0.993               | 0.556         |
 | [cGAN Identity](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py#L395)                      | 0.043 | 0.003 | 31.8 | 0.99  | 0.092 | 0.980             | 0.993               | 0.986         |
 
+_Score table averaged for 5 distinct seeds over testing set; "Jaccard Generated": Average Jaccard Index of reference classifier when evaluated on generated images; "Jaccard Groundtruth": Average Jaccard Index of reference classifier when evaluated on groundtruth images; "Jaccard Ratio": Jaccard Generated / Jaccard Groundtruth_
 
 ## Overview
 
