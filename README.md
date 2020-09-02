@@ -20,7 +20,7 @@ Toy experimental setup for evaluating relevance of deep generative models in rem
 
 > __How to ?__
 
-Setup YAML configuration files specifying _generation_ and _derivation_ steps. Templates are proposed under `src/toygeneration/config/`.
+Setup YAML configuration files specifying _generation_ and _derivation_ steps. Templates are proposed [here](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/tree/master/src/toygeneration/config/templates).
 
 Execute generation as:
 
@@ -54,7 +54,7 @@ For generation as for derivation, created frames have an instance segmentation a
 
 > __How to ?__
 
-Setup YAML configuration files specifying training : dataset, model, optimizer, experiment. Examples are proposed under `src/rsgan/config/`.
+Setup YAML configuration files specifying training : dataset, model, optimizer, experiment. Examples are proposed [here](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/tree/master/src/rsgan/config).
 
 Execute training on, say GPU 0, as:
 ```bash
@@ -76,6 +76,16 @@ Execute:
 $ python make_reference_classifier.py --cfg=path/to/experiment/config.yaml --o=output/directory
 $ python run_testing.py --cfg=path/to/experiment/config.yaml --o=output/directory --device=0
 ```
+
+
+### Existing experiments
+
+| Experiment                         | MAE   | MSE   | PSNR | SSIM  | SAM   | Jaccard Generated | Jaccard Groundtruth | Jaccard Ratio |
+|------------------------------------|-------|-------|------|-------|-------|-------------------|---------------------|---------------|
+| [cGAN Cloud Removal](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py#L14)                 | 0.246 | 0.129 | 17.9 | 0.687 | 0.174 | 0.493             | 0.993               | 0.496         |
+| [Frame-recurrent cGAN Cloud Removal](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/src/rsgan/experiments/cloud_removal/cgan_frame_recurrent_toy_cloud_removal.py#L12) | 0.200 | 0.074 | 21.2 | 0.825 | 0.147 | 0.553             | 0.993               | 0.556         |
+| [cGAN Identity](https://github.com/Cervest/ds-gan-spatiotemporal-evaluation/blob/master/src/rsgan/experiments/cloud_removal/cgan_toy_cloud_removal.py#L395)                      | 0.043 | 0.003 | 31.8 | 0.99  | 0.092 | 0.980             | 0.993               | 0.986         |
+
 
 ## Overview
 
